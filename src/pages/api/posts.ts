@@ -27,7 +27,7 @@ function getPaginatedResults(
 
 function handlePostsRequest(req: NextApiRequest, res: NextApiResponse) {
   const { query, category, page = 1 } = req.query;
-  const postsPerPage = 5;
+  const postsPerPage = 3;
   const startIndex = (Number(page) - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
 
