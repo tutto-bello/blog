@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Post } from "../types";
 import Image from "next/image";
 
@@ -9,15 +9,24 @@ const CardComponent: FC<{
   post: { id, slug, title, excerpt, imageUrl, categories },
   findCategoryNameById,
 }) => {
+  const [isLoading, setLoading] = useState(true);
   return (
     <div className="bg-white shadow-lg m-4 rounded-lg w-full md:w-1/3 xl:w-1/4 hover:cursor-pointer hover:-translate-y-3 duration-150">
       <div className="w-full h-36 relative rounded-t-lg">
         <Image
           src={imageUrl}
           alt={title}
-          className="rounded-t-md"
           objectFit="cover"
           fill
+          className={`
+            duration-700 ease-in-out rounded-t-md
+            ${
+              isLoading
+                ? "grayscale blur-sm scale-100"
+                : "grayscale-0 blur-0 scale-100"
+            }
+          `}
+          onLoadingComplete={() => setLoading(false)}
         />
       </div>
       <div className="p-6">
