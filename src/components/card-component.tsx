@@ -11,7 +11,7 @@ const CardComponent: FC<{
 }) => {
   const [isLoading, setLoading] = useState(true);
   return (
-    <div className="bg-white shadow-lg m-4 rounded-lg w-full md:w-1/3 xl:w-1/4 hover:cursor-pointer hover:-translate-y-3 duration-150">
+    <div className="bg-white shadow-lg m-4 rounded-lg w-full md:w-1/3 lg:w-1/4 hover:cursor-pointer hover:-translate-y-3 duration-150">
       <div className="w-full h-36 relative rounded-t-lg">
         <Image
           src={imageUrl}

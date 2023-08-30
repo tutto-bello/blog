@@ -103,7 +103,7 @@ export default function Home() {
       )}
 
       {posts.length === 0 && !isLoading && (
-        <div className="flex justify-center items-center h-96">
+        <div className="flex justify-center items-center h-96 mb-1">
           <p className="font-bold">No Results Match Your Search!</p>
         </div>
       )}
