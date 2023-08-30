@@ -52,7 +52,11 @@ function handlePostsRequest(req: NextApiRequest, res: NextApiResponse) {
     endIndex
   );
 
-  res.status(200).json({ posts: paginatedResults, totalPages });
+  res.status(200).json({
+    posts: paginatedResults,
+    totalPages,
+    resultsNumber: filteredPosts.length,
+  });
 }
 
 export default handlePostsRequest;

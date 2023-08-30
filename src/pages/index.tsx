@@ -6,11 +6,13 @@ import CardComponent from "../components/card-component";
 import LayoutComponent from "../components/layout/layout-component";
 import PaginationComponent from "../components/pagination-component";
 import LoadingComponent from "../components/loading-component";
+import TextInputComponent from "../components/text-input-component";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [resultsNumber, setResultsNumber] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,6 +32,7 @@ export default function Home() {
       if (data.totalPages === 0) {
         setCurrentPage(0);
       }
+      setResultsNumber(data.resultsNumber);
       setPosts(data.posts);
       setTotalPages(data.totalPages);
       setIsLoading(false);
@@ -78,17 +81,10 @@ export default function Home() {
   return (
     <LayoutComponent>
       <div className="flex flex-wrap lg:justify-between">
-        <div>
-          <h2 className="text-lg font-bold">Search by title:</h2>
-          <input
-            type="text"
-            id="search"
-            className="appearance-none rounded-lg border-gray-400 bg-white w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline max-w-md border-2 focus:border-purple-600 hover:border-purple-300"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by title"
-          />
-        </div>
+        <TextInputComponent
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
         <CategoryFilterComponent
           categories={categories}
           selectedCategories={selectedCategories}
@@ -121,6 +117,7 @@ export default function Home() {
       </div>
 
       <PaginationComponent
+        resultsNumber={resultsNumber}
         currentPage={currentPage}
         totalPages={totalPages}
         setCurrentPage={setCurrentPage}

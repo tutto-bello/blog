@@ -38,7 +38,7 @@ const CategoryFilterComponent: FC<CategoryFilterProps> = ({
             />
             <label
               htmlFor={String(category.id)}
-              className="select-none cursor-pointer rounded-lg border-2 border-gray-400 py-1.5 px-3 mr-2 font-semibold text-gray-400 transition-colors duration-200 ease-in-out peer-checked:bg-purple-500 peer-checked:text-white peer-checked:font-bold peer-checked:border-purple-500 hover:bg-gray-200"
+              className="select-none cursor-pointer rounded-lg border-2 border-gray-400 py-1.5 px-3 mr-2 font-semibold  transition-colors duration-200 ease-in-out peer-checked:bg-purple-500 peer-checked:text-white peer-checked:font-bold peer-checked:border-purple-500 hover:bg-purple-200"
             >
               {category.name}
             </label>
